@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import Hero from '@/components/Hero';
+import { homeContent } from '@/content/home';
 
 /**
  * Home page metadata
@@ -6,77 +8,75 @@ import type { Metadata } from 'next';
  */
 export const metadata: Metadata = {
   title: 'Home',
+  description: homeContent.hero.subtitle,
 };
 
 /**
  * Home Page Component
  * 
  * The main landing page of the portfolio.
- * Should include:
- * - Hero section with introduction
- * - Brief overview of skills
- * - Call-to-action links
+ * Structure:
+ * - Hero section with introduction and CTAs
+ * - Skills & Technologies overview
+ * - Future: Featured projects, testimonials, etc.
+ * 
+ * All content is managed in /content/home.ts for easy updates.
  */
 export default function HomePage() {
-  return (
-    <div className="container-custom py-16">
-      {/* Hero Section */}
-      <section className="text-center py-20">
-        <h1 className="text-5xl font-bold mb-4 text-gray-900 dark:text-white">
-          Hi, I&apos;m <span className="text-blue-600 dark:text-blue-400">Your Name</span>
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-          A passionate full-stack developer specializing in building modern web applications
-          with React, Next.js, and TypeScript.
-        </p>
-        <div className="flex gap-4 justify-center">
-          <a
-            href="/projects"
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
-          >
-            View Projects
-          </a>
-          <a
-            href="/contact"
-            className="px-6 py-3 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
-          >
-            Get in Touch
-          </a>
-        </div>
-      </section>
+  const { hero, skills } = homeContent;
 
-      {/* Skills Section */}
-      <section className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-          Skills & Technologies
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-              Frontend
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              React, Next.js, TypeScript, Tailwind CSS, HTML5, CSS3
+  return (
+    <>
+      {/* Hero Section */}
+      <Hero
+              headline={hero.headline}
+        subHeadline={hero.subHeadline}
+        highlightedText={hero.highlightedText}
+        subtitle={hero.subtitle}
+        primaryCTA={hero.primaryCTA}
+      />
+
+      {/* Skills & Technologies Section */}
+      <section className="section-padding bg-background">
+        <div className="container-custom">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-h2 font-bold text-text mb-4">
+              {skills.heading}
+            </h2>
+            <p className="text-body text-text-secondary max-w-2xl mx-auto">
+              {skills.description}
             </p>
           </div>
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-              Backend
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Node.js, Express, PostgreSQL, MongoDB, REST APIs
-            </p>
-          </div>
-          <div className="p-6 border border-gray-200 dark:border-gray-800 rounded-lg">
-            <h3 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
-              Tools
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Git, Docker, AWS, Vercel, CI/CD, Jest
-            </p>
+
+          {/* Skills Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {skills.categories.map((category, index) => (
+              <div key={category.title} className="card-hover group">
+                <div className="mb-4">
+                  <div className={`w-12 h-12 rounded-button flex items-center justify-center mb-4 transition-colors ${
+                    index === 1 
+                      ? 'bg-secondary/10 group-hover:bg-secondary/20' 
+                      : 'bg-primary/10 group-hover:bg-primary/20'
+                  }`}>
+                    <span className="text-2xl">{category.icon}</span>
+                  </div>
+                  <h3 className="text-h4 font-semibold text-text mb-3">
+                    {category.title}
+                  </h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill) => (
+                    <span key={skill} className="tag-primary">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 }

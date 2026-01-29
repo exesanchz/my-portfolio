@@ -1,14 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Outfit } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 /**
  * Font configuration using Next.js built-in font optimization
- * Inter is a modern, clean font perfect for portfolios
+ * Outfit is a modern, geometric sans-serif font perfect for portfolios
+ * Loaded with multiple weights for design flexibility
  */
-const inter = Inter({ subsets: ['latin'] });
+const outfit = Outfit({ 
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-outfit',
+});
 
 /**
  * Root metadata for SEO
@@ -51,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={outfit.className}>
       <body className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">

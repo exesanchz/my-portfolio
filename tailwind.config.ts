@@ -19,6 +19,30 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    /**
+     * Container Configuration
+     * 
+     * Provides a responsive container utility that works alongside
+     * custom container classes (.container-custom, etc).
+     * 
+     * Usage: <div className="container">
+     * - Automatically centered
+     * - Responsive horizontal padding
+     * - Aligned with existing maxWidth tokens
+     */
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '1rem',    // 16px mobile
+        md: '2rem',         // 32px tablet
+        lg: '3rem',         // 48px desktop
+      },
+      screens: {
+        xl: '1280px',       // Matches max-w-section
+        '2xl': '1536px',    // Matches max-w-wide
+      },
+    },
+    
     extend: {
       /**
        * Color Palette
@@ -70,6 +94,17 @@ const config: Config = {
           tertiary: '#6B7399',        // Tertiary text (subtle)
           muted: '#4A5070',           // Very subtle text (placeholders)
         },
+      },
+      
+      /**
+       * Font Family
+       * 
+       * Outfit is a modern, geometric sans-serif font.
+       * Provides excellent readability and a tech-forward aesthetic.
+       * Falls back to system fonts for optimal loading.
+       */
+      fontFamily: {
+        sans: ['var(--font-outfit)', 'Outfit', 'system-ui', '-apple-system', 'sans-serif'],
       },
       
       /**
