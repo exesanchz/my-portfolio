@@ -16,17 +16,17 @@
 :root {
   /* Core color values - matches Tailwind config */
   --color-deep-space: #050647;
-  --color-dark-navy: #0D0F1D;
-  --color-light-text: #E2E4F4;
-  --color-electric-blue: #58A6FF;
-  --color-cosmic-purple: #A74AC7;
-  --color-deep-purple: #511B4C;
-  
+  --color-dark-navy: #0d0f1d;
+  --color-light-text: #e2e4f4;
+  --color-electric-blue: #58a6ff;
+  --color-cosmic-purple: #a74ac7;
+  --color-deep-purple: #511b4c;
+
   /* Spacing rhythm */
-  --section-spacing-sm: 4rem;    /* 64px */
-  --section-spacing-md: 6rem;    /* 96px */
-  --section-spacing-lg: 8rem;    /* 128px */
-  
+  --section-spacing-sm: 4rem; /* 64px */
+  --section-spacing-md: 6rem; /* 96px */
+  --section-spacing-lg: 8rem; /* 128px */
+
   /* Typography - Outfit font weights */
   --font-weight-thin: 100;
   --font-weight-extralight: 200;
@@ -51,31 +51,31 @@
 html {
   /* Smooth scrolling for anchor links */
   scroll-behavior: smooth;
-  
+
   /* Better font rendering on dark backgrounds */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   /* Prevent horizontal scroll */
   overflow-x: hidden;
 }
 
 body {
   /* Dark theme colors */
-  background-color: #0D0F1D;
-  color: #E2E4F4;
-  
+  background-color: #0d0f1d;
+  color: #e2e4f4;
+
   /* Better text rendering */
   text-rendering: optimizeLegibility;
   font-feature-settings: 'kern' 1;
-  
+
   /* Remove default margin */
   margin: 0;
   padding: 0;
-  
+
   /* Prevent horizontal scroll */
   overflow-x: hidden;
-  
+
   /* Minimum height for full viewport */
   min-height: 100vh;
 }
@@ -85,7 +85,12 @@ body {
    ============================================ */
 
 /* Headings have tighter line height and better spacing */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: var(--font-weight-bold);
   letter-spacing: -0.01em;
   color: var(--color-light-text);
@@ -108,7 +113,7 @@ a {
 }
 
 a:hover {
-  color: #78B6FF; /* primary-light */
+  color: #78b6ff; /* primary-light */
 }
 
 a:focus-visible {
@@ -118,7 +123,8 @@ a:focus-visible {
 }
 
 /* Better list spacing */
-ul, ol {
+ul,
+ol {
   padding-left: 1.5rem;
   margin-bottom: 1rem;
 }
@@ -138,7 +144,7 @@ code {
 }
 
 pre {
-  background-color: #1A1D35;
+  background-color: #1a1d35;
   border-radius: 0.5rem;
   padding: 1rem;
   overflow-x: auto;
@@ -178,12 +184,12 @@ pre code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #2D3250;
+  background: #2d3250;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3D4260;
+  background: #3d4260;
 }
 
 /* ============================================
@@ -191,199 +197,198 @@ pre code {
    ============================================ */
 
 @layer components {
-  
   /**
    * Container Utilities
    * 
    * Consistent content width across different sections
    */
-  
+
   .container-custom {
-    @apply max-w-section mx-auto px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-section px-4 sm:px-6 lg:px-8;
   }
-  
+
   .container-narrow {
-    @apply max-w-4xl mx-auto px-4 sm:px-6;
+    @apply mx-auto max-w-4xl px-4 sm:px-6;
   }
-  
+
   .container-wide {
-    @apply max-w-wide mx-auto px-4 sm:px-6 lg:px-8;
+    @apply mx-auto max-w-wide px-4 sm:px-6 lg:px-8;
   }
-  
+
   /**
    * Section Spacing
    * 
    * Consistent vertical rhythm for page sections
    */
-  
+
   .section-padding {
     @apply py-16 md:py-24 lg:py-30;
   }
-  
+
   .section-padding-sm {
     @apply py-12 md:py-16 lg:py-20;
   }
-  
+
   .section-padding-lg {
     @apply py-20 md:py-30 lg:py-34;
   }
-  
+
   /**
    * Card Components
    * 
    * Surface styles for elevated content
    */
-  
+
   .card {
-    @apply bg-surface rounded-card p-6 shadow-card;
+    @apply rounded-card bg-surface p-6 shadow-card;
   }
-  
+
   .card-hover {
     @apply card transition-all duration-normal;
   }
-  
+
   .card-hover:hover {
-    @apply shadow-card-hover transform -translate-y-1;
+    @apply -translate-y-1 transform shadow-card-hover;
   }
-  
+
   .card-bordered {
     @apply card border border-surface-border;
   }
-  
+
   .card-glow {
     @apply card shadow-glow-subtle;
   }
-  
+
   /**
    * Text Utilities
    * 
    * Semantic text color classes
    */
-  
+
   .text-primary-color {
     @apply text-text;
   }
-  
+
   .text-secondary-color {
     @apply text-text-secondary;
   }
-  
+
   .text-muted-color {
     @apply text-text-muted;
   }
-  
+
   /**
    * Gradient Text Effect
    * 
    * For hero titles and special headings
    */
-  
+
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-electric-blue to-cosmic-purple;
+    @apply bg-gradient-to-r from-electric-blue to-cosmic-purple bg-clip-text text-transparent;
   }
-  
+
   /**
    * Button Base Styles
    * 
    * Foundation for button components (not full implementation)
    */
-  
+
   .btn-base {
     @apply inline-flex items-center justify-center;
-    @apply px-6 py-3 rounded-button;
+    @apply rounded-button px-6 py-3;
     @apply font-medium transition-all duration-normal;
     @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
   }
-  
+
   .btn-primary {
     @apply btn-base bg-primary text-white;
     @apply hover:bg-primary-light;
     @apply focus:ring-primary;
   }
-  
+
   .btn-secondary {
     @apply btn-base bg-secondary text-white;
     @apply hover:bg-secondary-light;
     @apply focus:ring-secondary;
   }
-  
+
   .btn-outline {
     @apply btn-base border-2 border-surface-border;
     @apply text-text hover:bg-surface-light;
     @apply focus:ring-primary;
   }
-  
+
   /**
    * Input Base Styles
    * 
    * Foundation for form inputs
    */
-  
+
   .input-base {
-    @apply w-full px-4 py-3 rounded-input;
-    @apply bg-surface border border-surface-border;
+    @apply w-full rounded-input px-4 py-3;
+    @apply border border-surface-border bg-surface;
     @apply text-text placeholder-text-muted;
     @apply transition-colors duration-fast;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+    @apply focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary;
   }
-  
+
   /**
    * Tag/Badge Styles
    * 
    * For technology tags, labels, etc.
    */
-  
+
   .tag {
-    @apply inline-block px-3 py-1 rounded-tag;
+    @apply inline-block rounded-tag px-3 py-1;
     @apply text-sm font-medium;
     @apply bg-surface-light text-text-secondary;
   }
-  
+
   .tag-primary {
     @apply tag bg-primary/10 text-primary;
   }
-  
+
   .tag-secondary {
     @apply tag bg-secondary/10 text-secondary;
   }
-  
+
   /**
    * Divider
    * 
    * Subtle section separators
    */
-  
+
   .divider {
-    @apply border-t border-surface-border my-8;
+    @apply my-8 border-t border-surface-border;
   }
-  
+
   .divider-vertical {
-    @apply border-l border-surface-border mx-4 h-full;
+    @apply mx-4 h-full border-l border-surface-border;
   }
-  
+
   /**
    * Link Styles
    * 
    * Consistent link appearance
    */
-  
+
   .link {
     @apply text-primary hover:text-primary-light;
     @apply transition-colors duration-fast;
     @apply underline-offset-4 hover:underline;
   }
-  
+
   .link-subtle {
     @apply text-text-secondary hover:text-text;
     @apply transition-colors duration-fast;
   }
-  
+
   /**
    * Focus Visible
    * 
    * Better focus states for accessibility
    */
-  
+
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2;
     @apply focus-visible:ring-primary focus-visible:ring-offset-2;
@@ -396,7 +401,6 @@ pre code {
    ============================================ */
 
 @layer utilities {
-  
   /**
    * Text Balance
    * 
@@ -405,7 +409,7 @@ pre code {
   .text-balance {
     text-wrap: balance;
   }
-  
+
   /**
    * Hide Scrollbar (but keep functionality)
    */
@@ -413,11 +417,11 @@ pre code {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-  
+
   /**
    * Gradient Overlays
    * 
@@ -427,14 +431,14 @@ pre code {
     @apply absolute inset-0;
     background: linear-gradient(to bottom, transparent 0%, rgba(13, 15, 29, 0.8) 100%);
   }
-  
+
   /**
    * Blur Backdrop
    * 
    * For glassmorphism effects (use sparingly)
    */
   .backdrop-blur-surface {
-    @apply backdrop-blur-md bg-surface/80;
+    @apply bg-surface/80 backdrop-blur-md;
   }
 }
 
@@ -447,18 +451,18 @@ pre code {
     background: white;
     color: black;
   }
-  
+
   .no-print {
     display: none !important;
   }
-  
+
   .section-padding,
   .section-padding-sm,
   .section-padding-lg {
     @apply py-4;
   }
-  
+
   .card {
-    @apply shadow-none border border-gray-300;
+    @apply border border-gray-300 shadow-none;
   }
 }

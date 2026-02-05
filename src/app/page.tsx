@@ -15,14 +15,14 @@ export const metadata: Metadata = {
 
 /**
  * Home Page Component
- * 
+ *
  * Single-page portfolio with all sections:
  * - Hero section with introduction
  * - Feature grid with key highlights
  * - Skills & Technologies
  * - Resume/Experience
  * - Contact information
- * 
+ *
  * All content is managed in /content/home.tsx for easy updates.
  * Sections have IDs for smooth scroll navigation via floating menu.
  */
@@ -47,33 +47,29 @@ export default function HomePage() {
       <section id="skills" className="section-padding bg-background">
         <div className="container-custom">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-h2 font-bold text-text mb-4">
-              {skills.heading}
-            </h2>
-            <p className="text-body text-text-secondary max-w-2xl mx-auto">
-              {skills.description}
-            </p>
+          <div className="mb-16 text-center">
+            <h2 className="mb-4 text-h2 font-bold text-text">{skills.heading}</h2>
+            <p className="mx-auto max-w-2xl text-body text-text-secondary">{skills.description}</p>
           </div>
 
           {/* Skills Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
             {skills.categories.map((category, index) => (
               <div key={category.title} className="card-hover group">
                 <div className="mb-4">
-                  <div className={`w-12 h-12 rounded-button flex items-center justify-center mb-4 transition-colors ${
-                    index === 1 
-                      ? 'bg-secondary/10 group-hover:bg-secondary/20' 
-                      : 'bg-primary/10 group-hover:bg-primary/20'
-                  }`}>
+                  <div
+                    className={`mb-4 flex h-12 w-12 items-center justify-center rounded-button transition-colors ${
+                      index === 1
+                        ? 'bg-secondary/10 group-hover:bg-secondary/20'
+                        : 'bg-primary/10 group-hover:bg-primary/20'
+                    }`}
+                  >
                     <span className="text-2xl">{category.icon}</span>
                   </div>
-                  <h3 className="text-h4 font-semibold text-text mb-3">
-                    {category.title}
-                  </h3>
+                  <h3 className="mb-3 text-h4 font-semibold text-text">{category.title}</h3>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {category.skills.map((skill) => (
+                  {category.skills.map(skill => (
                     <span key={skill} className="tag-primary">
                       {skill}
                     </span>
@@ -93,11 +89,7 @@ export default function HomePage() {
       />
 
       {/* Contact Section */}
-      <ContactSection
-        email={contact.email}
-        github={contact.github}
-        linkedin={contact.linkedin}
-      />
+      <ContactSection email={contact.email} linkedin={contact.linkedin} />
     </>
   );
 }

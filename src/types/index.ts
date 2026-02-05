@@ -1,6 +1,6 @@
 /**
  * Type Definitions
- * 
+ *
  * Centralized type definitions for the application.
  * Add shared types, interfaces, and type guards here.
  */

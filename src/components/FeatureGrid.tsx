@@ -2,14 +2,14 @@ import FeatureCard from './FeatureCard';
 
 /**
  * FeatureGrid Component
- * 
+ *
  * A responsive bento-grid layout showcasing key features and highlights.
- * 
+ *
  * Layout Strategy:
  * - Desktop: 2-column CSS Grid with varying card sizes
  * - Mobile: Single column with proper spacing
  * - Cards can span multiple columns/rows for visual interest
- * 
+ *
  * Design Philosophy:
  * - Premium, modern aesthetic
  * - Clear visual hierarchy through size variation
@@ -51,8 +51,8 @@ export default function FeatureGrid({ features }: FeatureGridProps) {
           - Desktop: 2 columns, auto rows with minmax for flexibility
           - Gap ensures consistent spacing between cards
         */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 auto-rows-auto">
-          {features.map((feature) => (
+        <div className="grid auto-rows-auto grid-cols-1 gap-6 md:grid-cols-2">
+          {features.map(feature => (
             <FeatureCard
               key={feature.id}
               title={feature.title}

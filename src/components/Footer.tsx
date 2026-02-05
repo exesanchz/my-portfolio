@@ -1,6 +1,6 @@
 /**
  * Footer Component
- * 
+ *
  * A simple, reusable footer that appears on all pages.
  * Can be extended with social links, copyright info, etc.
  */
@@ -8,7 +8,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-gray-200 dark:border-gray-800 mt-auto">
+    <footer className="mt-auto border-t border-gray-200 dark:border-gray-800">
       <div className="container-custom py-8">
         <div className="flex flex-col items-center justify-center space-y-4">
           {/* Social links placeholder - can be extended */}
@@ -17,7 +17,7 @@ export default function Footer() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               aria-label="GitHub"
             >
               GitHub
@@ -26,14 +26,14 @@ export default function Footer() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               aria-label="LinkedIn"
             >
               LinkedIn
             </a>
             <a
               href="mailto:hello@example.com"
-              className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+              className="text-gray-600 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
               aria-label="Email"
             >
               Email

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 
 /**
  * Screen Size Breakpoints
- * 
+ *
  * Matches Tailwind's default breakpoints for consistency
  */
 export const BREAKPOINTS = {
@@ -19,14 +19,14 @@ export type Breakpoint = keyof typeof BREAKPOINTS;
 
 /**
  * Screen Size Hook
- * 
+ *
  * Provides consistent screen size detection across the application.
  * Returns boolean flags for each breakpoint and the current width.
- * 
+ *
  * Usage:
  * ```tsx
  * const { isMobile, isTablet, isDesktop, width } = useScreenSize();
- * 
+ *
  * if (isDesktop) {
  *   // Desktop-specific logic
  * }
@@ -66,9 +66,9 @@ export function useScreenSize() {
 
 /**
  * Media Query Hook
- * 
+ *
  * For custom media queries beyond standard breakpoints.
- * 
+ *
  * Usage:
  * ```tsx
  * const isWide = useMediaQuery('(min-width: 1400px)');
@@ -80,7 +80,7 @@ export function useMediaQuery(query: string): boolean {
 
   useEffect(() => {
     const mediaQuery = window.matchMedia(query);
-    
+
     // Set initial value
     setMatches(mediaQuery.matches);
 
@@ -93,7 +93,7 @@ export function useMediaQuery(query: string): boolean {
     if (mediaQuery.addEventListener) {
       mediaQuery.addEventListener('change', handleChange);
       return () => mediaQuery.removeEventListener('change', handleChange);
-    } 
+    }
     // Legacy browsers
     else {
       mediaQuery.addListener(handleChange);

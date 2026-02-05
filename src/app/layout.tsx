@@ -9,7 +9,7 @@ import FloatingMenu from '@/components/FloatingMenu';
  * Outfit is a modern, geometric sans-serif font perfect for portfolios
  * Loaded with multiple weights for design flexibility
  */
-const outfit = Outfit({ 
+const outfit = Outfit({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   display: 'swap',
@@ -41,25 +41,19 @@ export const metadata: Metadata = {
 
 /**
  * Root Layout Component
- * 
+ *
  * Single-page portfolio layout with:
  * - Floating menu for navigation
  * - Footer at bottom
  * - Font configuration
  * - Global styles
  */
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={outfit.className}>
-      <body className="min-h-screen flex flex-col">
+      <body className="flex min-h-screen flex-col">
         <FloatingMenu />
-        <main className="flex-1">
-          {children}
-        </main>
+        <main className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>
