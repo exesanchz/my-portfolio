@@ -1,14 +1,20 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Outfit } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingMenu from '@/components/FloatingMenu';
 
 /**
  * Font configuration using Next.js built-in font optimization
- * Inter is a modern, clean font perfect for portfolios
+ * Outfit is a modern, geometric sans-serif font perfect for portfolios
+ * Loaded with multiple weights for design flexibility
  */
-const inter = Inter({ subsets: ['latin'] });
+const outfit = Outfit({ 
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-outfit',
+});
 
 /**
  * Root metadata for SEO
@@ -36,14 +42,11 @@ export const metadata: Metadata = {
 /**
  * Root Layout Component
  * 
- * This layout wraps all pages in the application.
- * It provides:
- * - HTML structure
- * - Global styles
- * - Persistent UI elements (Navbar, Footer)
+ * Single-page portfolio layout with:
+ * - Floating menu for navigation
+ * - Footer at bottom
  * - Font configuration
- * 
- * The min-h-screen and flex column ensure footer stays at bottom.
+ * - Global styles
  */
 export default function RootLayout({
   children,
@@ -51,9 +54,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={outfit.className}>
       <body className="min-h-screen flex flex-col">
-        <Navbar />
+        <FloatingMenu />
         <main className="flex-1">
           {children}
         </main>

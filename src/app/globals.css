@@ -2,27 +2,463 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global styles and CSS variables */
+/**
+ * Design System - Global Styles
+ * 
+ * Establishes the visual foundation for the entire portfolio.
+ * Focus: Dark theme, readability, smooth interactions.
+ */
+
+/* ============================================
+   CSS Custom Properties (CSS Variables)
+   ============================================ */
+
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  /* Core color values - matches Tailwind config */
+  --color-deep-space: #050647;
+  --color-dark-navy: #0D0F1D;
+  --color-light-text: #E2E4F4;
+  --color-electric-blue: #58A6FF;
+  --color-cosmic-purple: #A74AC7;
+  --color-deep-purple: #511B4C;
+  
+  /* Spacing rhythm */
+  --section-spacing-sm: 4rem;    /* 64px */
+  --section-spacing-md: 6rem;    /* 96px */
+  --section-spacing-lg: 8rem;    /* 128px */
+  
+  /* Typography - Outfit font weights */
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 15, 23, 42;
-  }
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  /* Better box sizing */
+  box-sizing: border-box;
+}
+
+html {
+  /* Smooth scrolling for anchor links */
+  scroll-behavior: smooth;
+  
+  /* Better font rendering on dark backgrounds */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
+  /* Dark theme colors */
+  background-color: #0D0F1D;
+  color: #E2E4F4;
+  
+  /* Better text rendering */
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1;
+  
+  /* Remove default margin */
+  margin: 0;
+  padding: 0;
+  
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  
+  /* Minimum height for full viewport */
+  min-height: 100vh;
 }
 
-/* Custom utility classes can be added here */
+/* ============================================
+   Typography Refinements
+   ============================================ */
+
+/* Headings have tighter line height and better spacing */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.01em;
+  color: var(--color-light-text);
+}
+
+/* Better paragraph spacing */
+p {
+  margin-bottom: 1rem;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Optimized link styles */
+a {
+  color: var(--color-electric-blue);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #78B6FF; /* primary-light */
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Better list spacing */
+ul, ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* Code and pre blocks (for technical content) */
+code {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.875em;
+  background-color: rgba(88, 166, 255, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  color: var(--color-electric-blue);
+}
+
+pre {
+  background-color: #1A1D35;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* ============================================
+   Selection Styling
+   ============================================ */
+
+::selection {
+  background-color: rgba(88, 166, 255, 0.3);
+  color: var(--color-light-text);
+}
+
+::-moz-selection {
+  background-color: rgba(88, 166, 255, 0.3);
+  color: var(--color-light-text);
+}
+
+/* ============================================
+   Scrollbar Styling (Webkit browsers)
+   ============================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-dark-navy);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2D3250;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3D4260;
+}
+
+/* ============================================
+   Component Layer - Reusable Utility Classes
+   ============================================ */
+
 @layer components {
+  
+  /**
+   * Container Utilities
+   * 
+   * Consistent content width across different sections
+   */
+  
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-section mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6;
+  }
+  
+  .container-wide {
+    @apply max-w-wide mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /**
+   * Section Spacing
+   * 
+   * Consistent vertical rhythm for page sections
+   */
+  
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-30;
+  }
+  
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  .section-padding-lg {
+    @apply py-20 md:py-30 lg:py-34;
+  }
+  
+  /**
+   * Card Components
+   * 
+   * Surface styles for elevated content
+   */
+  
+  .card {
+    @apply bg-surface rounded-card p-6 shadow-card;
+  }
+  
+  .card-hover {
+    @apply card transition-all duration-normal;
+  }
+  
+  .card-hover:hover {
+    @apply shadow-card-hover transform -translate-y-1;
+  }
+  
+  .card-bordered {
+    @apply card border border-surface-border;
+  }
+  
+  .card-glow {
+    @apply card shadow-glow-subtle;
+  }
+  
+  /**
+   * Text Utilities
+   * 
+   * Semantic text color classes
+   */
+  
+  .text-primary-color {
+    @apply text-text;
+  }
+  
+  .text-secondary-color {
+    @apply text-text-secondary;
+  }
+  
+  .text-muted-color {
+    @apply text-text-muted;
+  }
+  
+  /**
+   * Gradient Text Effect
+   * 
+   * For hero titles and special headings
+   */
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-electric-blue to-cosmic-purple;
+  }
+  
+  /**
+   * Button Base Styles
+   * 
+   * Foundation for button components (not full implementation)
+   */
+  
+  .btn-base {
+    @apply inline-flex items-center justify-center;
+    @apply px-6 py-3 rounded-button;
+    @apply font-medium transition-all duration-normal;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply btn-base bg-primary text-white;
+    @apply hover:bg-primary-light;
+    @apply focus:ring-primary;
+  }
+  
+  .btn-secondary {
+    @apply btn-base bg-secondary text-white;
+    @apply hover:bg-secondary-light;
+    @apply focus:ring-secondary;
+  }
+  
+  .btn-outline {
+    @apply btn-base border-2 border-surface-border;
+    @apply text-text hover:bg-surface-light;
+    @apply focus:ring-primary;
+  }
+  
+  /**
+   * Input Base Styles
+   * 
+   * Foundation for form inputs
+   */
+  
+  .input-base {
+    @apply w-full px-4 py-3 rounded-input;
+    @apply bg-surface border border-surface-border;
+    @apply text-text placeholder-text-muted;
+    @apply transition-colors duration-fast;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent;
+  }
+  
+  /**
+   * Tag/Badge Styles
+   * 
+   * For technology tags, labels, etc.
+   */
+  
+  .tag {
+    @apply inline-block px-3 py-1 rounded-tag;
+    @apply text-sm font-medium;
+    @apply bg-surface-light text-text-secondary;
+  }
+  
+  .tag-primary {
+    @apply tag bg-primary/10 text-primary;
+  }
+  
+  .tag-secondary {
+    @apply tag bg-secondary/10 text-secondary;
+  }
+  
+  /**
+   * Divider
+   * 
+   * Subtle section separators
+   */
+  
+  .divider {
+    @apply border-t border-surface-border my-8;
+  }
+  
+  .divider-vertical {
+    @apply border-l border-surface-border mx-4 h-full;
+  }
+  
+  /**
+   * Link Styles
+   * 
+   * Consistent link appearance
+   */
+  
+  .link {
+    @apply text-primary hover:text-primary-light;
+    @apply transition-colors duration-fast;
+    @apply underline-offset-4 hover:underline;
+  }
+  
+  .link-subtle {
+    @apply text-text-secondary hover:text-text;
+    @apply transition-colors duration-fast;
+  }
+  
+  /**
+   * Focus Visible
+   * 
+   * Better focus states for accessibility
+   */
+  
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2;
+    @apply focus-visible:ring-primary focus-visible:ring-offset-2;
+    @apply focus-visible:ring-offset-background;
+  }
+}
+
+/* ============================================
+   Utilities Layer - Additional Helpers
+   ============================================ */
+
+@layer utilities {
+  
+  /**
+   * Text Balance
+   * 
+   * Better text wrapping for headings
+   */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  /**
+   * Hide Scrollbar (but keep functionality)
+   */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /**
+   * Gradient Overlays
+   * 
+   * For image overlays and effects
+   */
+  .overlay-gradient {
+    @apply absolute inset-0;
+    background: linear-gradient(to bottom, transparent 0%, rgba(13, 15, 29, 0.8) 100%);
+  }
+  
+  /**
+   * Blur Backdrop
+   * 
+   * For glassmorphism effects (use sparingly)
+   */
+  .backdrop-blur-surface {
+    @apply backdrop-blur-md bg-surface/80;
+  }
+}
+
+/* ============================================
+   Print Styles (for Resume page)
+   ============================================ */
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .section-padding,
+  .section-padding-sm,
+  .section-padding-lg {
+    @apply py-4;
+  }
+  
+  .card {
+    @apply shadow-none border border-gray-300;
   }
 }
