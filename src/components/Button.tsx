@@ -166,7 +166,7 @@ export default function Button({
   );
   
   const innerContent = isGradientVariant ? (
-    <span className={`flex items-center justify-center w-full h-full bg-background rounded-[10px] px-8 py-4 text-text ${startIcon ? 'gap-2' : ''}`}>
+    <span className={`flex items-center justify-center w-full h-full bg-background rounded-[10px] px-6 py-3 text-text ${startIcon ? 'gap-2' : ''}`}>
       {buttonContent}
     </span>
   ) : (

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
+import FeatureGrid from '@/components/FeatureGrid';
 import { homeContent } from '@/content/home';
 
 /**
@@ -17,24 +18,27 @@ export const metadata: Metadata = {
  * The main landing page of the portfolio.
  * Structure:
  * - Hero section with introduction and CTAs
+ * - Feature grid with key highlights
  * - Skills & Technologies overview
- * - Future: Featured projects, testimonials, etc.
  * 
  * All content is managed in /content/home.ts for easy updates.
  */
 export default function HomePage() {
-  const { hero, skills } = homeContent;
+  const { hero, features, skills } = homeContent;
 
   return (
     <>
       {/* Hero Section */}
       <Hero
-              headline={hero.headline}
+        headline={hero.headline}
         subHeadline={hero.subHeadline}
         highlightedText={hero.highlightedText}
         subtitle={hero.subtitle}
         primaryCTA={hero.primaryCTA}
       />
+
+      {/* Feature Grid Section */}
+      <FeatureGrid features={features} />
 
       {/* Skills & Technologies Section */}
       <section className="section-padding bg-background">
