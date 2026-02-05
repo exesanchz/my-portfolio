@@ -1,4 +1,4 @@
-import { File } from 'lucide-react';
+import { Download, File, Mail } from 'lucide-react';
 
 /**
  * Home Page Content
@@ -64,7 +64,8 @@ export const homeContent = {
       title: "Let's connect!",
       cta: {
         text: "EMAIL ADDRESS",
-        href: "/contact",
+          href: "/contact",
+        icon: <Mail className='mr-2 size-5'/>,
       },
       variant: "gradient-purple" as const,
       gridSpan: { cols: 1 as const, rows: 1 as const },
@@ -94,7 +95,7 @@ export const homeContent = {
       cta: {
         text: "RESUME",
         href: "/resume",
-        icon: <File className='size-5'/>,
+        icon: <Download className='size-5'/>,
       },
       variant: "gradient-purple" as const,
       gridSpan: { cols: 1 as const, rows: 1 as const },
@@ -148,6 +149,53 @@ export const homeContent = {
       },
     ],
   },
+
+  /**
+   * Resume Section Content
+   */
+  resume: {
+    summary: "Passionate full-stack developer with X years of experience building scalable web applications. Specialized in React, Next.js, and modern web technologies. Strong focus on clean code, user experience, and continuous learning.",
+    
+    experiences: [
+      {
+        title: "Senior Developer",
+        company: "Company Name",
+        period: "2022 - Present",
+        achievements: [
+          "Led development of key features using React and Next.js",
+          "Improved application performance by 40% through optimization",
+          "Mentored junior developers and conducted code reviews",
+        ],
+        isHighlighted: true,
+      },
+      {
+        title: "Full Stack Developer",
+        company: "Another Company",
+        period: "2020 - 2022",
+        achievements: [
+          "Built responsive web applications using modern frameworks",
+          "Implemented RESTful APIs and database designs",
+          "Collaborated with cross-functional teams in Agile environment",
+        ],
+      },
+    ],
+    
+    education: [
+      {
+        degree: "Bachelor of Science in Computer Science",
+        institution: "University Name",
+        period: "2016 - 2020",
+      },
+    ],
+  },
+
+  /**
+   * Contact Section Content
+   */
+  contact: {
+    email: "exequielnsanchez@gmail.com",
+    linkedin: "https://www.linkedin.com/in/exequiel-sanchez-6145881b9/",
+  },
 } as const;
 
 /**
@@ -157,3 +205,5 @@ export type HomeContent = typeof homeContent;
 export type HeroContent = typeof homeContent.hero;
 export type FeaturesContent = typeof homeContent.features;
 export type SkillsContent = typeof homeContent.skills;
+export type ResumeContent = typeof homeContent.resume;
+export type ContactContent = typeof homeContent.contact;

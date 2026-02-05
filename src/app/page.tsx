@@ -1,30 +1,33 @@
 import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import FeatureGrid from '@/components/FeatureGrid';
+import ResumeSection from '@/components/ResumeSection';
+import ContactSection from '@/components/ContactSection';
 import { homeContent } from '@/content/home';
 
 /**
  * Home page metadata
- * Overrides the default metadata from layout
  */
 export const metadata: Metadata = {
-  title: 'Home',
+  title: 'Exequiel Sanchez - Portfolio',
   description: homeContent.hero.subtitle,
 };
 
 /**
  * Home Page Component
  * 
- * The main landing page of the portfolio.
- * Structure:
- * - Hero section with introduction and CTAs
+ * Single-page portfolio with all sections:
+ * - Hero section with introduction
  * - Feature grid with key highlights
- * - Skills & Technologies overview
+ * - Skills & Technologies
+ * - Resume/Experience
+ * - Contact information
  * 
- * All content is managed in /content/home.ts for easy updates.
+ * All content is managed in /content/home.tsx for easy updates.
+ * Sections have IDs for smooth scroll navigation via floating menu.
  */
 export default function HomePage() {
-  const { hero, features, skills } = homeContent;
+  const { hero, features, skills, resume, contact } = homeContent;
 
   return (
     <>
@@ -41,7 +44,7 @@ export default function HomePage() {
       <FeatureGrid features={features} />
 
       {/* Skills & Technologies Section */}
-      <section className="section-padding bg-background">
+      <section id="skills" className="section-padding bg-background">
         <div className="container-custom">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -81,6 +84,20 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Resume Section */}
+      <ResumeSection
+        summary={resume.summary}
+        experiences={resume.experiences as any}
+        education={resume.education as any}
+      />
+
+      {/* Contact Section */}
+      <ContactSection
+        email={contact.email}
+        github={contact.github}
+        linkedin={contact.linkedin}
+      />
     </>
   );
 }

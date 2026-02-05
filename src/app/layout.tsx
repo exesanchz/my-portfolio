@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { Outfit } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingMenu from '@/components/FloatingMenu';
 
 /**
  * Font configuration using Next.js built-in font optimization
@@ -42,14 +42,11 @@ export const metadata: Metadata = {
 /**
  * Root Layout Component
  * 
- * This layout wraps all pages in the application.
- * It provides:
- * - HTML structure
- * - Global styles
- * - Persistent UI elements (Navbar, Footer)
+ * Single-page portfolio layout with:
+ * - Floating menu for navigation
+ * - Footer at bottom
  * - Font configuration
- * 
- * The min-h-screen and flex column ensure footer stays at bottom.
+ * - Global styles
  */
 export default function RootLayout({
   children,
@@ -59,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={outfit.className}>
       <body className="min-h-screen flex flex-col">
-        <Navbar />
+        <FloatingMenu />
         <main className="flex-1">
           {children}
         </main>
