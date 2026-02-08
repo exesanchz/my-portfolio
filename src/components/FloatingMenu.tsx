@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useScreenSize } from '@/hooks/useScreenSize';
+import { handleHashNavigation } from '@/utils/smoothScroll';
 
 /**
  * Floating Menu Component
@@ -60,6 +61,7 @@ export default function FloatingMenu() {
           <a
             key={item.id}
             href={`#${item.id}`}
+            onClick={(e) => handleHashNavigation(e, `#${item.id}`)}
             className={`rounded-full px-4 py-2 text-sm font-bold text-text-secondary transition-all 
               duration-200 hover:bg-surface-light hover:text-text`}
           >

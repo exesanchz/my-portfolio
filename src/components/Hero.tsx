@@ -73,21 +73,22 @@ export default function Hero({
 
       {/* Content Container */}
       <div className="section-padding-lg relative z-10">
-        <div className="container-custom">
+        <div className="container-custom px-6 sm:px-4">
           <div className="mx-auto max-w-4xl text-center">
-            {/* Headline with Gradient Text */}
+            {/* Headline with Gradient Text - Split on mobile */}
             <h1 className="mb-10 text-hero font-bold">
-              <span className="text-text">{headline}</span>{' '}
-              <span className="text-gradient">{highlightedText}</span>
+              <span className="text-text block sm:inline">{headline}</span>
+              <span className="text-gradient block sm:inline sm:ml-3">{highlightedText}</span>
             </h1>
 
-            {/* Subheadline */}
+            {/* Subheadline - Split on mobile */}
             <p className="text-text-primary mx-auto mb-0 max-w-2xl text-h3 leading-relaxed">
-              {subHeadline}
+              <span className="block sm:inline">Software Engineer</span>
+              <span className="block sm:inline"> & UI/UX Enthusiast</span>
             </p>
 
             {/* Subtitle */}
-            <p className="mx-auto  mb-10 max-w-2xl text-h4 font-light leading-relaxed">
+            <p className="mx-auto mb-10 max-w-2xl text-h4 font-light leading-relaxed">
               {subtitle}
             </p>
             {/* CTA Buttons */}

@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { ReactNode } from 'react';
+import { handleHashNavigation } from '@/utils/smoothScroll';
 
 /**
  * Button Component
@@ -183,6 +186,20 @@ export default function Button({
    * Render as Link if href is provided
    */
   if (href && !disabled) {
+    // For hash links, use anchor tag with smooth scroll handler
+    if (href.startsWith('#')) {
+      return (
+        <a
+          href={href}
+          className={buttonStyles}
+          onClick={(e) => handleHashNavigation(e, href)}
+        >
+          {innerContent}
+        </a>
+      );
+    }
+    
+    // For regular links, use Next.js Link
     return (
       <Link href={href} className={buttonStyles}>
         {innerContent}

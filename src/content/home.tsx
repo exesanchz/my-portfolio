@@ -205,6 +205,12 @@ export const homeContent = {
         period: '2017 - 2023',
         location: 'Argentina',
       },
+      {
+        degree: 'Bachelor of Electromecanical Equipement and Automations',
+        institution: 'Technical Education School',
+        period: '2011 - 2017',
+        location: 'Argentina',
+      },
     ],
 
     languages: [

@@ -121,12 +121,7 @@ export default function ResumeSection({
             <h3 className="mb-8 text-h3 font-semibold text-text">Work Experience</h3>
             <div className="space-y-8">
               {experiences.map((exp, index) => (
-                <div
-                  key={index}
-                  className={`border-l-2 pl-6 ${
-                    exp.isHighlighted ? 'border-primary' : 'border-[var(--color-deep-purple-2)]'
-                  }`}
-                >
+                <div key={index} className="border-l-2 border-primary pl-6">
                   <div className="mb-4">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center sm:gap-4">
                       <h4 className="mb-2 text-h4 font-semibold text-text">{exp.title}</h4>
@@ -134,21 +129,24 @@ export default function ResumeSection({
                       <span className="text-body-sm text-text-tertiary">{exp.period}</span>
                     </div>
 
-                    {/* Company and Location */}
-                    <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center sm:gap-4">
+                    {/* Company and Location - Inline on mobile */}
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                       {/* Company with Link */}
                       <a
                         href={exp.companyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/link inline-flex items-center gap-2 text-text-secondary transition-colors hover:text-primary"
+                        className="group/link inline-flex items-center gap-1.5 text-primary underline decoration-primary/30 underline-offset-2 transition-colors hover:text-primary-light hover:decoration-primary-light"
                       >
-                        <span className="text-body">{exp.company}</span>
+                        <span className="text-body font-medium">{exp.company}</span>
                         <ExternalLink
                           size={14}
-                          className="opacity-0 transition-opacity group-hover/link:opacity-100"
+                          className="opacity-60 transition-opacity group-hover/link:opacity-100"
                         />
                       </a>
+
+                      {/* Separator dot */}
+                      <span className="text-text-muted">•</span>
 
                       {/* Location */}
                       <div className="inline-flex items-center gap-1.5 text-text-tertiary">
@@ -181,13 +179,17 @@ export default function ResumeSection({
                       </div>
                       <span className="text-body-sm text-text-tertiary">{edu.period}</span>
                     </div>
-                    <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-center sm:gap-4">
+                    <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
                       <p className="mb-0 text-body text-text-secondary">{edu.institution}</p>
                       {edu.location && (
-                        <div className="inline-flex items-center gap-1.5 text-text-muted">
-                          <MapPin size={14} />
-                          <span className="text-body-sm">{edu.location}</span>
-                        </div>
+                        <>
+                          {/* Separator dot */}
+                          <span className="text-text-muted">•</span>
+                          <div className="inline-flex items-center gap-1.5 text-text-muted">
+                            <MapPin size={14} />
+                            <span className="text-body-sm">{edu.location}</span>
+                          </div>
+                        </>
                       )}
                     </div>
                   </div>
