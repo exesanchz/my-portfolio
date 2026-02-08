@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 
 /**
  * useToast Hook
- * 
+ *
  * Custom hook for managing toast notifications.
  * Provides a simple interface to show and hide toast messages.
  */
