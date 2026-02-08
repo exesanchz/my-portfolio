@@ -86,6 +86,7 @@ export default function HomePage() {
         summary={resume.summary}
         experiences={resume.experiences as any}
         education={resume.education as any}
+        languages={resume.languages as any}
       />
 
       {/* Contact Section */}

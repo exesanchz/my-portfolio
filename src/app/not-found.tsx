@@ -24,12 +24,6 @@ export default function NotFound() {
           >
             Go Home
           </Link>
-          <Link
-            href="/projects"
-            className="rounded-lg border border-gray-300 px-6 py-3 font-medium transition-colors hover:bg-gray-50 dark:border-gray-700 dark:hover:bg-gray-800"
-          >
-            View Projects
-          </Link>
         </div>
       </div>
     </div>

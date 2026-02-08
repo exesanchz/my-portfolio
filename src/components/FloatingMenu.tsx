@@ -8,6 +8,12 @@ import { useScreenSize } from '@/hooks/useScreenSize';
  *
  * A fixed, centered navigation menu with smooth scroll.
  *
+ * Strategy: Uses hash-based navigation (#section-id) for:
+ * - URL updates (bookmarkable/shareable)
+ * - No JavaScript required (works without JS)
+ * - Smooth scrolling via CSS (scroll-behavior: smooth)
+ * - Better accessibility and semantics
+ *
  * Behavior:
  * - Desktop (>= 1024px): Always visible
  * - Mobile/Tablet (< 1024px): Appears after scrolling 300px
@@ -33,20 +39,6 @@ export default function FloatingMenu() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 100; // Offset from top
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-    }
-  };
-
   // Desktop: always visible | Mobile/Tablet: show after scroll
   const isVisible = isDesktop || hasScrolled;
 
@@ -60,19 +52,19 @@ export default function FloatingMenu() {
         className="flex items-center gap-2 rounded-full px-6 py-2 backdrop-blur-md"
         style={{
           backgroundColor: 'rgba(13, 15, 29, 0.8)',
-          border: '2px solid #2B158E',
+          border: '2px solid var(--color-deep-purple-2)',
           boxShadow: '0 4px 12px rgba(43, 21, 142, 0.2)',
         }}
       >
         {menuItems.map(item => (
-          <button
+          <a
             key={item.id}
-            onClick={() => scrollToSection(item.id)}
+            href={`#${item.id}`}
             className={`rounded-full px-4 py-2 text-sm font-bold text-text-secondary transition-all 
               duration-200 hover:bg-surface-light hover:text-text`}
           >
             {item.label}
-          </button>
+          </a>
         ))}
       </nav>
     </div>

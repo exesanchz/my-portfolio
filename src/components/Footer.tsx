@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="container-custom py-8">
         <div className="flex flex-col items-center justify-center space-y-4">
           {/* Social links placeholder - can be extended */}
-          <div className="flex space-x-6">
+          {/* <div className="flex space-x-6">
             <a
               href="https://github.com"
               target="_blank"
@@ -38,11 +38,11 @@ export default function Footer() {
             >
               Email
             </a>
-          </div>
+          </div> */}
 
           {/* Copyright */}
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Exequiel Sanchez. All rights reserved.
           </p>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { Outfit } from 'next/font/google';
 import './globals.css';
 import Footer from '@/components/Footer';
 import FloatingMenu from '@/components/FloatingMenu';
+import ScrollToTop from '@/components/ScrollToTop';
 
 /**
  * Font configuration using Next.js built-in font optimization
@@ -44,6 +45,7 @@ export const metadata: Metadata = {
  *
  * Single-page portfolio layout with:
  * - Floating menu for navigation
+ * - Scroll to top button
  * - Footer at bottom
  * - Font configuration
  * - Global styles
@@ -55,6 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <FloatingMenu />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

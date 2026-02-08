@@ -76,6 +76,18 @@ interface FeatureCardProps {
    * Text alignment
    */
   textAlign?: 'left' | 'center' | 'right';
+
+  /**
+   * Optional click handler for email button
+   * When provided, the CTA button will trigger this instead of navigating
+   */
+  onEmailClick?: (e: React.MouseEvent) => void;
+
+  /**
+   * Optional click handler for resume download button
+   * When provided, the CTA button will trigger this instead of navigating
+   */
+  onResumeDownload?: (e: React.MouseEvent) => void;
 }
 
 export default function FeatureCard({
@@ -87,6 +99,8 @@ export default function FeatureCard({
   variant = 'surface',
   gridSpan = { cols: 1, rows: 1 },
   textAlign = 'left',
+  onEmailClick,
+  onResumeDownload,
 }: FeatureCardProps) {
   /**
    * Background styles based on variant
@@ -161,7 +175,12 @@ export default function FeatureCard({
         {/* CTA Button */}
         {cta && (
           <div className="">
-            <Button href={cta.href} variant="outline-gradient" startIcon={cta.icon}>
+            <Button 
+              href={onEmailClick || onResumeDownload ? undefined : cta.href}
+              onClick={onEmailClick || onResumeDownload}
+              variant="outline-gradient" 
+              startIcon={cta.icon}
+            >
               {cta.text}
             </Button>
           </div>

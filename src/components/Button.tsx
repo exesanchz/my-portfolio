@@ -48,7 +48,7 @@ interface ButtonProps {
   /**
    * Click handler for button elements
    */
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 
   /**
    * Button type attribute (for form buttons)
