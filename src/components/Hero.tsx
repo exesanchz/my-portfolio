@@ -3,7 +3,7 @@ import Button from './Button';
 
 /**
  * Hero Component
- * 
+ *
  * The main hero section that introduces the portfolio.
  * Features:
  * - Full-width gradient background for depth
@@ -11,7 +11,7 @@ import Button from './Button';
  * - Gradient text effect on the name/headline
  * - Primary and secondary CTAs
  * - Fully responsive with the design system
- * 
+ *
  * Design Philosophy:
  * - Uses only design system tokens (colors, typography, spacing)
  * - Premium, modern aesthetic with subtle depth
@@ -28,18 +28,18 @@ interface HeroProps {
    * Supporting text that describes your role or focus
    */
   subHeadline: string;
-  
+
   /**
    * Optional highlighted part of the headline (e.g., your name)
    * Will receive gradient treatment
    */
   highlightedText: string;
-  
+
   /**
    * Supporting text that describes your role or focus
    */
   subtitle: string;
-  
+
   /**
    * Text for the primary CTA button
    */
@@ -47,7 +47,7 @@ interface HeroProps {
     text: string;
     href: string;
   };
-  
+
   /**
    * Text for the secondary CTA button (optional)
    */
@@ -70,39 +70,37 @@ export default function Hero({
       {/* Gradient Overlay for depth */}
       <div className="absolute inset-0 bg-gradient-hero opacity-60" />
       <div className="absolute inset-0 bg-gradient-glow opacity-40" />
-      
+
       {/* Content Container */}
-      <div className="relative z-10 section-padding-lg">
+      <div className="section-padding-lg relative z-10">
         <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            
+          <div className="mx-auto max-w-4xl text-center">
             {/* Headline with Gradient Text */}
-            <h1 className="text-hero font-bold mb-10">
-              <span className="text-text">{headline}</span>
-              {' '}
+            <h1 className="mb-10 text-hero font-bold">
+              <span className="text-text">{headline}</span>{' '}
               <span className="text-gradient">{highlightedText}</span>
             </h1>
-            
+
             {/* Subheadline */}
-            <p className="text-h3 text-text-primary mb-0 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-text-primary mx-auto mb-0 max-w-2xl text-h3 leading-relaxed">
               {subHeadline}
-                      </p>
-                      
+            </p>
+
             {/* Subtitle */}
-            <p className="text-h4  font-light mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="mx-auto  mb-10 max-w-2xl text-h4 font-light leading-relaxed">
               {subtitle}
             </p>
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Button
                 href={primaryCTA.href}
-                              variant="outline-gradient"
-                              startIcon={<Send className='mr-2 size-5'/>}
+                variant="outline-gradient"
+                startIcon={<Send className="mr-2 size-5" />}
               >
                 {primaryCTA.text}
               </Button>
-              
-{/*               {secondaryCTA && (
+
+              {/*               {secondaryCTA && (
                 <Button
                   href={secondaryCTA.href}
                   variant="secondary"
@@ -111,13 +109,12 @@ export default function Hero({
                 </Button>
               )} */}
             </div>
-            
           </div>
         </div>
       </div>
-      
+
       {/* Bottom fade for smooth transition to next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background via-background/60 to-transparent" />
     </section>
   );
 }

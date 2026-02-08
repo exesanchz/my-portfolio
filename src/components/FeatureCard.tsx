@@ -3,7 +3,7 @@ import Button from './Button';
 
 /**
  * FeatureCard Component
- * 
+ *
  * A premium card component for the feature grid.
  * Features:
  * - Flexible content support (title, description, CTA)
@@ -11,7 +11,7 @@ import Button from './Button';
  * - Gradient backgrounds for visual impact
  * - Smooth hover interactions (elevation + glow)
  * - Fully responsive with proper text contrast
- * 
+ *
  * Design Philosophy:
  * - Modern bento-grid aesthetic
  * - Clear visual hierarchy
@@ -25,12 +25,12 @@ interface FeatureCardProps {
    * Optional - for image-only cards
    */
   title?: string;
-  
+
   /**
    * Optional description text
    */
   description?: string;
-  
+
   /**
    * Optional CTA button
    */
@@ -39,12 +39,12 @@ interface FeatureCardProps {
     href: string;
     icon?: ReactNode;
   };
-  
+
   /**
    * Optional background image URL
    */
   backgroundImage?: string;
-  
+
   /**
    * Custom gradient for circular radiating effect
    * Format: "linear-gradient(angle, color1 start%, color2 end%)"
@@ -52,7 +52,7 @@ interface FeatureCardProps {
    * Takes precedence over variant if provided
    */
   gradient?: string;
-  
+
   /**
    * Background style variant
    * - gradient-primary: Blue to purple gradient
@@ -61,7 +61,7 @@ interface FeatureCardProps {
    * - image: Use when backgroundImage is provided
    */
   variant?: 'gradient-primary' | 'gradient-purple' | 'surface' | 'image';
-  
+
   /**
    * Grid span configuration for responsive layout
    */
@@ -71,11 +71,23 @@ interface FeatureCardProps {
     /** Row span (1-2) */
     rows?: 1 | 2;
   };
-  
+
   /**
    * Text alignment
    */
   textAlign?: 'left' | 'center' | 'right';
+
+  /**
+   * Optional click handler for email button
+   * When provided, the CTA button will trigger this instead of navigating
+   */
+  onEmailClick?: (e: React.MouseEvent) => void;
+
+  /**
+   * Optional click handler for resume download button
+   * When provided, the CTA button will trigger this instead of navigating
+   */
+  onResumeDownload?: (e: React.MouseEvent) => void;
 }
 
 export default function FeatureCard({
@@ -87,8 +99,9 @@ export default function FeatureCard({
   variant = 'surface',
   gridSpan = { cols: 1, rows: 1 },
   textAlign = 'left',
+  onEmailClick,
+  onResumeDownload,
 }: FeatureCardProps) {
-  
   /**
    * Background styles based on variant
    */
@@ -106,7 +119,7 @@ export default function FeatureCard({
         return 'bg-surface';
     }
   };
-  
+
   /**
    * Grid span classes for responsive layout
    */
@@ -114,11 +127,11 @@ export default function FeatureCard({
     ${gridSpan.cols === 2 ? 'md:col-span-2' : 'md:col-span-1'}
     ${gridSpan.rows === 2 ? 'md:row-span-2' : 'md:row-span-1'}
   `;
-  
+
   return (
     <div
       className={`
-        relative overflow-hidden rounded-card group
+        group relative overflow-hidden rounded-card
         ${gradient ? '' : getBackgroundStyles()}
         ${gridClasses}
       `}
@@ -128,47 +141,44 @@ export default function FeatureCard({
       {backgroundImage && (
         <>
           <div
-            className="absolute inset-0 bg-cover bg-center opacity-90 group-hover:opacity-100 transition-opacity duration-normal"
+            className="absolute inset-0 bg-cover bg-center opacity-90 transition-opacity duration-normal group-hover:opacity-100"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
           {/* Optional: Add subtle overlay only if text needs more contrast */}
           <div className="absolute inset-0 bg-gradient-to-br from-background-deep/20 via-transparent to-background-deep/30" />
         </>
       )}
-      
+
       {/* Content Container */}
-      <div className={`
+      <div
+        className={`
         relative z-10
-        h-full min-h-[220px]
+        flex h-full
+        min-h-[220px] flex-col
         p-8 md:p-10
-        flex flex-col
-        ${textAlign === 'center' ? 'items-center text-center justify-center' : textAlign === 'right' ? 'items-end text-right' : 'items-start text-left'}
+        ${textAlign === 'center' ? 'items-center justify-center text-center' : textAlign === 'right' ? 'items-end text-right' : 'items-start text-left'}
         ${backgroundImage ? 'justify-end' : 'justify-center'}
         ${cta ? 'justify-around' : ''}
-      `}>
+      `}
+      >
         {/* Text Content - only render if title or description exist */}
         {(title || description) && (
           <div className={textAlign === 'center' ? 'max-w-md' : ''}>
-            {title && (
-              <h3 className="text-h3 font-bold text-text leading-tight">
-                {title}
-              </h3>
-            )}
-            
+            {title && <h3 className="text-h3 font-bold leading-tight text-text">{title}</h3>}
+
             {description && (
-              <p className="text-body text-text-secondary leading-relaxed">
-                {description}
-              </p>
+              <p className="text-body leading-relaxed text-text-secondary">{description}</p>
             )}
           </div>
         )}
-        
+
         {/* CTA Button */}
         {cta && (
           <div className="">
-            <Button
-              href={cta.href}
-              variant="outline-gradient"
+            <Button 
+              href={onEmailClick || onResumeDownload ? undefined : cta.href}
+              onClick={onEmailClick || onResumeDownload}
+              variant="outline-gradient" 
               startIcon={cta.icon}
             >
               {cta.text}
