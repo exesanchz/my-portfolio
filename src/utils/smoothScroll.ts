@@ -41,12 +41,12 @@ export function smoothScrollToElement(targetId: string) {
     const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
     const targetPosition = elementPosition - offset;
 
-    smoothScrollToPosition(targetPosition, 100);
+    smoothScrollToPosition(targetPosition, 300);
   }
 }
 
 export function smoothScrollToTop() {
-  smoothScrollToPosition(0, 100);
+  smoothScrollToPosition(0, 300);
 }
 
 export function handleHashNavigation(e: React.MouseEvent, href: string) {
