@@ -23,20 +23,20 @@ const outfit = Outfit({
  */
 export const metadata: Metadata = {
   title: {
-    default: 'Your Name - Portfolio',
-    template: '%s | Your Name',
+    default: 'Exequiel Sanchez - Resume',
+    template: '%s | Exequiel Sanchez',
   },
-  description: 'Personal portfolio showcasing projects, skills, and experience',
-  keywords: ['portfolio', 'web developer', 'software engineer'],
-  authors: [{ name: 'Your Name' }],
-  creator: 'Your Name',
+  description: 'Personal portfolio showcasing skills and experience',
+  keywords: ['portfolio', 'software engineer', 'ui/ux', 'frontend'],
+  authors: [{ name: 'Exequiel Sanchez' }],
+  creator: 'Exequiel Sanchez',
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://yourwebsite.com',
-    siteName: 'Your Name Portfolio',
-    title: 'Your Name - Portfolio',
-    description: 'Personal portfolio showcasing projects, skills, and experience',
+    url: 'https://exequiel-sanchez.vercel.app/',
+    siteName: 'Exequiel Sanchez - Resume',
+    title: 'Exequiel Sanchez - Resume',
+    description: 'Personal portfolio showcasing skills and experience',
   },
 };
 
