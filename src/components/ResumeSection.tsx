@@ -205,14 +205,14 @@ export default function ResumeSection({
               {languages.map((language, index) => (
                 <div
                   key={index}
-                  className="group rounded-card border border-[--color-deep-purple-2] p-4 transition-all duration-normal hover:border-primary/20"
+                  className="group rounded-card border border-[var(--color-electric-blue)] p-4 transition-all duration-normal hover:border-primary/20"
                 >
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="mb-1 text-h4 font-semibold text-text">{language.name}</h4>
                       <p className="text-body-sm text-text-secondary">{language.level}</p>
                     </div>
-                    <div className="h-2 w-2 rounded-full bg-[var(--color-deep-purple-2)] transition-transform duration-normal group-hover:scale-150" />
+                    <div className="h-2 w-2 rounded-full bg-[var(--color-electric-blue)] transition-transform duration-normal group-hover:scale-150" />
                   </div>
                 </div>
               ))}

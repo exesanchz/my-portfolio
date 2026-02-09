@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
+import { smoothScrollToTop } from '@/utils/smoothScroll';
 
 /**
  * ScrollToTop Component
@@ -45,10 +46,7 @@ export default function ScrollToTop() {
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+    smoothScrollToTop();
   };
 
   return (
